@@ -12,8 +12,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Music Mockup App | Collaborative Frontend Prototype", 
+  title: {
+    template: "%s | Music Mockup App",
+    default: "Collaborative Frontend Prototype", 
+  },
   description: "A collaborative music creation prototype built with React, Tone.js, and Next.js.",
+  
+  viewport: "width=device-width, initial-scale=1, viewport-fit=cover",
+
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
     { media: "(prefers-color-scheme: dark)", color: "#000000" },
@@ -26,9 +32,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark"> 
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`
+          ${geistSans.variable} 
+          ${geistMono.variable} 
+          antialiased 
+          
+          /* Added Base Styling for a Dark UI */
+          min-h-screen 
+          bg-black 
+          text-gray-50 
+          transition-colors 
+        `}
       >
         {children}
       </body>
